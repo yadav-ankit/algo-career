@@ -24,7 +24,13 @@ while (r < n)
 --------------------------
 
   //Mota map
+//keep 2 pointers i , j 
 
+//Also we will use a map Data structure to check freuency move j to right and keep checking these 2 things 
+
+//if our map size is = window (j-i+1) ..--> keep updating max 
+
+else if map size < (j-i+1) this means map me duplicates h so increment i and remove duplicates 
   class Solution { 
     public int lengthOfLongestSubstring(String s) { 
         Map<Character, Integer> map = new HashMap<>(); 

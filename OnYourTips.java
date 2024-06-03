@@ -23,3 +23,24 @@ Search in a 2D Matrix - I | Binary Search of 2D
 Row = index/ m ; 
 Col = index % m ;
 
+--------------------------------------------------------
+
+// Rotate an array to right by d places
+/*
+Reverse the entire array: This will bring the last 𝑘 elements to the front, but in reverse order.
+Reverse the first 𝑘 elements: This will put the first 𝑘 elements in the correct order.
+Reverse the remaining elements: This will sort the rest of the elements, completing the rotation.
+
+*/
+
+ int n = arr.length;
+        k = k % n; // In case k is greater than array length
+
+// Step 1: Reverse the entire array
+ reverse(arr, 0, n - 1);
+
+// Step 2: Reverse the first k elements
+reverse(arr, 0, k - 1);
+
+// Step 3: Reverse the remaining elements
+reverse(arr, k, n - 1);

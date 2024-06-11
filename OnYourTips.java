@@ -1,5 +1,14 @@
 Array.fill (0 , arr_name); 
 
+
+Integer arr[] = {10, 20, 20, 30, 20, 40, 50}; 
+
+List<Integer> list = Arrays.asList(arr);
+int freq = Collections.frequency(Arrays.asList(arr), 20); 
+
+Collections.rotate(mylist, 2);  // move everything 2 places to LEFT.   , put -2 for right.
+
+
 // reverse
 private static void reverse(int arr[] , int n){
     int l = 0 , r = n-1;

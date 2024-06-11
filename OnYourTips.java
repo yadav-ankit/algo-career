@@ -60,3 +60,20 @@ reverse(arr, k, n - 1);
 Grid uniqe path to reach bottom right
 
     dp[i[j] = dp[i-1][j] + dp[i][j-1] + // if diogonal is allowed dp[i-1][j-1];
+------------------------
+
+
+kadanes algo  largest-sum-contiguous-subarray (for a -ve +ve array)
+
+int max = Integer.MIN_VALUE, sum= 0;
+
+        for (int i = 0; i < size; i++) {
+            sum = sum + a[rri];
+            if (sum > max)
+                max = sum;
+            
+            if (sum < 0)
+                sum = 0;
+        }
+        return max;
+     }

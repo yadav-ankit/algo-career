@@ -77,3 +77,18 @@ int max = Integer.MIN_VALUE, sum= 0;
         }
         return max;
      }
+
+-------------
+// reverse of above ...min sum contiguous subarray
+    
+    smallestSumSubarr(arr, n)
+    Initialize sum = INT_MAX
+    Initialize min = INT_MAX
+    
+    for i = 0 to n-1
+        if sum > 0
+            sum = arr[i]        
+        else
+            sum += arr[i]
+        min = min(min, sum)
+    return min

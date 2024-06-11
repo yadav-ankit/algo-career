@@ -44,3 +44,10 @@ reverse(arr, 0, k - 1);
 
 // Step 3: Reverse the remaining elements
 reverse(arr, k, n - 1);
+
+
+------------------------------
+
+Grid uniqe path to reach bottom right
+
+    dp[i[j] = dp[i-1][j] + dp[i][j-1] + // if diogonal is allowed dp[i-1][j-1];

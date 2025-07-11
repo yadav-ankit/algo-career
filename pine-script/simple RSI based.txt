@@ -1,0 +1,52 @@
+//@version=6
+strategy("RSI crosses MA Strategy (Reversed Logic)", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=100)
+
+// === Inputs ===
+rsiLength = input.int(14, minval=1, title="RSI Length")
+rsiSource = input.source(close, title="RSI Source")
+maType = input.string("SMA", "MA Type", options=["SMA", "EMA", "SMMA", "WMA", "VWMA"])
+
+// === Fixed MA length ===
+maLength = 50
+
+// === RSI Calculation ===
+change = ta.change(rsiSource)
+up = ta.rma(math.max(change, 0), rsiLength)
+down = ta.rma(-math.min(change, 0), rsiLength)
+rsi = down == 0 ? 100 : up == 0 ? 0 : 100 - (100 / (1 + up / down))
+
+// === MA of RSI ===
+maFunc(source, len, typ) =>
+    switch typ
+        "SMA"  => ta.sma(source, len)
+        "EMA"  => ta.ema(source, len)
+        "SMMA" => ta.rma(source, len)
+        "WMA"  => ta.wma(source, len)
+        "VWMA" => ta.vwma(source, len)
+
+rsiMA = maFunc(rsi, maLength, maType)
+
+// === Reversed Strategy Logic ===
+longEntry  = ta.crossover(rsi, rsiMA)     // RSI crosses above MA → Long
+longExit   = ta.crossunder(rsi, rsiMA)    // RSI crosses below MA → Exit
+
+shortEntry = ta.crossunder(rsi, rsiMA)    // RSI crosses below MA → Short
+shortExit  = ta.crossover(rsi, rsiMA)     // RSI crosses above MA → Exit
+
+// === Orders ===
+if (longEntry)
+    strategy.entry("Long", strategy.long)
+if (longExit)
+    strategy.close("Long")
+
+if (shortEntry)
+    strategy.entry("Short", strategy.short)
+if (shortExit)
+    strategy.close("Short")
+
+// === Plot ===
+plot(rsi, "RSI", color=color.purple)
+plot(rsiMA, "RSI MA (50)", color=color.orange)
+hline(70, "Overbought", color=color.gray)
+hline(30, "Oversold", color=color.gray)
+hline(50, "Midline", color=color.gray, linestyle=hline.style_dotted)

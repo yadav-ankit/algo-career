@@ -1,5 +1,13 @@
 //@version=6
-strategy("RSI crosses MA Strategy (Reversed Logic)", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=100)
+/*
+| **Trade Type** | **Entry Condition**          | **Exit Condition**           |
+| -------------- | ---------------------------- | ---------------------------- |
+| **Long**       | RSI **crosses above** RSI MA | RSI **crosses below** RSI MA |
+| **Short**      | RSI **crosses below** RSI MA | RSI **crosses above** RSI MA |
+
+
+*/
+strategy("RSI crosses MA Strategy (Main Logic)", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=100)
 
 // === Inputs ===
 rsiLength = input.int(14, minval=1, title="RSI Length")

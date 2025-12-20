@@ -1,4 +1,4 @@
-/*
+/*  Time = O(nlogn)
 One-line mental model (very important 🧠)
 
   flowers counts consecutive bloomed flowers

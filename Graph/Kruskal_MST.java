@@ -3,6 +3,7 @@ Let’s build it **clean, interview-ready, and intuitive**.
 
 ---
 
+ 
 # 🌲 Kruskal’s Minimum Spanning Tree (MST) using DSU
 
 ## 🔹 Problem recap
@@ -27,6 +28,21 @@ Given:
 4. Use **DSU** to detect cycles efficiently
 
 ---
+
+ When should you use Kruskal’s MST?
+
+Use Kruskal when you want the cheapest way to connect everything without redundancy.
+ Use Kruskal if:
+
+✔ Graph is undirected
+
+✔ You want minimum total cost
+
+✔ Graph is sparse (edges ≈ vertices)
+
+✔ You already have an edge list
+
+ 
 
 ## 🚀 Why DSU is perfect here
 
@@ -104,6 +120,7 @@ class Edge {
     }
 }
 ```
+
 
 ---
 

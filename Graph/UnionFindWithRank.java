@@ -31,3 +31,21 @@ class UnionFind {
         }
     }
 }
+
+
+One-line Interview Answer (Perfect)
+
+Time: Amortized O(α(N)) per operation
+Space: O(N)
+
+
+    What does that actually mean?
+
+Grows so slowly that:
+α(10¹⁸) ≤ 5
+
+For all real-world inputs: constant time
+
+So in interviews and practice:
+
+find() with path compression ≈ O(1)

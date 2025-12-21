@@ -22,7 +22,7 @@ class UnionFind {
         if (pa == pb) return;
 
         if (rank[pa] < rank[pb]) {
-            parent[pa] = pb;
+            parent[pa] = pb; // pa will get attached to pb
         } else if (rank[pb] < rank[pa]) {
             parent[pb] = pa;
         } else {

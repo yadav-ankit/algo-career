@@ -81,3 +81,44 @@ dp[i][w] = max(
     dp[i-1][w],                     // skip
     value[i] + dp[i][w - weight[i]] // take again
 )
+
+  ------------------------
+
+  class Item {
+    int value, weight;
+    Item(int v, int w) {
+        value = v;
+        weight = w;
+    }
+}
+
+public double fractionalKnapsack(int W, Item[] items) {
+
+   Arrays.sort(items, new Comparator<Item>() {
+    public int compare(Item a, Item b) {
+        double r1 = (double) b.value / b.weight;
+        double r2 = (double) a.value / a.weight;
+        return Double.compare(r1, r2);
+    }
+});
+
+
+    double totalValue = 0.0;
+
+    for (Item item : items) {
+        if (W >= item.weight) {
+            W -= item.weight;
+            totalValue += item.value;
+        } else {
+            totalValue += item.value * ((double) W / item.weight);
+            break;
+        }
+    }
+    return totalValue;
+}
+
+⏱️ Complexity
+
+Time: O(n log n) (sorting)
+
+Space: O(1) extra

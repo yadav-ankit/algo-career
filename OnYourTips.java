@@ -9,6 +9,18 @@ int freq = Collections.frequency(Arrays.asList(arr), 20);
 Collections.rotate(mylist, 2);  // move everything 2 places to LEFT.   , put -2 for right.
 
 
+Map<Character, Integer> map = new HashMap<>(); 
+
+ char c = s.charAt(index); 
+
+map.put(c, map.getOrDefault(c, 0) + 1); 
+
+  
+
+int[][] intervals 
+
+Arrays.sort(intervals, (a, b) -> a[0] - b[0]); 
+
 // reverse
 private static void reverse(int arr[] , int n){
     int l = 0 , r = n-1;

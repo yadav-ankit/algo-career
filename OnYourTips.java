@@ -104,3 +104,32 @@ int max = Integer.MIN_VALUE, sum= 0;
             sum += arr[i]
         min = min(min, sum)
     return min
+
+
+
+ Given a list of pairs ..sort it by sum of first ele + second ele 
+
+List<Pair> pairs = new ArrayList<>();  
+pairs.add(new Pair(1, 2)); 
+ pairs.add(new Pair(8, 2));  
+pairs.add(new Pair(4, 1));  
+pairs.add(new Pair(3, 9));  
+pairs.sort(Comparator.comparingInt(pair -> pair.first + pair.second));  
+-------------------- 
+
+Sort it by first ele 
+pairs.sort(Comparator.comparingInt(pair -> pair.first));  
+
+
+Generic 
+
+ 
+
+pairs.sort(new Comparator<Pair>() {  
+@Override  
+
+public int compare(Pair p1, Pair p2)  {  
+     int sum1 = p1.first + p1.second;  
+     int sum2 = p2.first + p2.second;  
+   return Integer.compare(sum1, sum2);  
+} }); 

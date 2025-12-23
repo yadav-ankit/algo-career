@@ -8,18 +8,43 @@ Output: [1, 3, 2]
 
 Input: arr[] = [2, 4, 1, 7, 5, 0]
 Output: [2, 4, 5, 0, 1, 7]
-Explanation: The next permutation of the given array is [2, 4, 5, 0, 1, 7].
+
 
 Input:  [1, 1, 5]
 Output: [1, 5, 1]
 
-
 ⚠️ Constraints:
 
 Modify array in-place
-
 O(1) extra space
 
+
+    ✅ The 4-Step Algorithm (MUST MEMORIZE)
+1️⃣ Find the breakpoint
+
+Traverse from right and find the first index i such that:
+nums[i] < nums[i + 1]
+
+
+If no such index → array is last permutation.
+
+2️⃣ If no breakpoint → reverse whole array
+[3,2,1] → [1,2,3]
+
+
+Done.
+
+3️⃣ Find element just greater than nums[i]
+
+From right, find index j such that:
+nums[j] > nums[i]
+
+4️⃣ Swap & Reverse suffix
+Swap nums[i] and nums[j]
+
+Reverse array from i + 1 to end
+This ensures the next smallest permutation.
+    
 class Solution {
     public void nextPermutation(int[] nums) {
         int n = nums.length;

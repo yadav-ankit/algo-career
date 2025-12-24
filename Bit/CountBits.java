@@ -1,4 +1,6 @@
 
+Count number of bits to be flipped to convert A to B
+    
 class Solution {
     
     //  xor & 1 → checks last bit

@@ -134,29 +134,7 @@ Interview favorite 💯
 
 ---
 
-## 🔹 10. XOR tricks (gold mine)
 
-### a) Find unique number (others appear twice)
-
-```java
-int ans = 0;
-for (int x : arr) ans ^= x;
-```
-
-### b) Swap two numbers
-
-```java
-a = a ^ b;
-b = a ^ b;
-a = a ^ b;
-```
-
-### c) Find two unique numbers
-
-```java
-xorAll = a ^ b
-rightMostSetBit = xorAll & -xorAll
-```
 
 ---
 

@@ -81,3 +81,13 @@ public String replaceWords(List<String> dictionary, String sentence) {
 As soon as we find a valid root in the Trie, we stop.
 
 We don’t look for longer prefixes — shortest root wins.
+
+
+    ⏱️ Complexity
+
+Build Trie	O(total chars in dictionary)
+    
+Replace	O(total chars in sentence)
+
+Space	O(total dictionary chars)
+    

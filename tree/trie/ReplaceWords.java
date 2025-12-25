@@ -3,7 +3,7 @@ Given a dictionary of root words and a sentence,
 replace each word in the sentence with the shortest root that is its prefix.
 If no root exists, keep the word as-is.
 
-
+/*
 
 Dictionary:
 
@@ -19,7 +19,8 @@ Replacement:
 
 the cat was rat by the bat
 
-
+*/
+    
 class TrieNode {
     TrieNode[] children = new TrieNode[26];
     boolean isWord;

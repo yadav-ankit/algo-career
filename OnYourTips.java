@@ -9,6 +9,11 @@ int freq = Collections.frequency(Arrays.asList(arr), 20);
 Collections.rotate(mylist, 2);  // move everything 2 places to LEFT.   , put -2 for right.
 
 
+String[] words
+// 1. Sort by word length
+Arrays.sort(words, Comparator.comparingInt(String::length));
+
+
 Map<Character, Integer> map = new HashMap<>(); 
 
  char c = s.charAt(index); 

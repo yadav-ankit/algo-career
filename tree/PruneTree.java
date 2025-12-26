@@ -15,6 +15,42 @@ Given a **binary tree** where each node value is `0` or `1`:
 
 So the decision is made **bottom-up** (postorder).
 
+
+Preorder doesn’t have enough information yet.
+Postorder does.
+
+Now let’s make that crystal clear.
+
+🧠 Recall the pruning rule
+
+We delete a node only if:
+
+node.val == 0
+
+left subtree is pruned
+
+right subtree is pruned
+
+👉 The decision depends on the children’s final state.
+
+❌ Why PREORDER fails (Root → Left → Right)
+
+In preorder, you see the node before its children.
+
+Example:
+
+      0
+     /
+    1
+
+
+At the root (0):
+
+Left child exists → but you don’t know yet if it will survive pruning
+
+If you delete now, you make a wrong decision
+
+  
 ---
 
 ## ✅ Strategy (always works)

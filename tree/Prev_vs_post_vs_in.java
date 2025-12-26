@@ -1,7 +1,3 @@
-Ankit — this is a **fantastic** question. If you truly internalize this, a *lot* of tree problems suddenly become obvious. You’re absolutely right to pause here 👌
-
-Let’s build a **clear mental rule**, not a memorization list.
-
 ---
 
 # 🧠 The One Golden Rule

@@ -44,7 +44,7 @@ so we wil have dp[day][B/S][transactions or k]
   Buy = 1
   Sell = 0
 
-  Also we can see B/S and Transactions are constant for a day so
+  Also we are iterating over days and we can see B/S and Transactions are constant for a day so
   
   To covert 3d dp array to 2d we have moved dp[day] to curr and dp[day+1] to ahead
   so now we will have

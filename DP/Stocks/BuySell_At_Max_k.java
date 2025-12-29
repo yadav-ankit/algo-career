@@ -1,4 +1,10 @@
-​
+1 = Buy
+0 = Sell
+
+https://www.geeksforgeeks.org/dsa/maximum-profit-by-buying-and-selling-a-share-at-most-k-times/#expected-approach2-space-optmized-onk-time-and-onk-space
+
+https://www.youtube.com/watch?v=-uQGzhYj8BQ
+    ​
     static int maxProfit(int[] prices, int k) {
         int n = prices.length;
 ​
@@ -61,6 +67,21 @@ so we wil have dp[day][B/S][transactions or k]
      t bcz transaction stil not competed  (it will complete when i will sell)
      1 bcz i have not buy so i will buy in days ahead.
     
-     
+
+     -------------------------------
+Now SELL
+     curr[t][0] = Math.max(prices[i] + ahead[t - 1][1], ahead[t][0]);
+
+ if we sell
+     prices[i] = bcz we have recieved in our pockert so +ve
+   ahead[t][1] = 
+     t-1 bcz transaction competed (now i have 1 less transaction to think of)
+     1 bcz i have given authrotiy to buy in days ahead for next transaction
+
+   if we skip
+   ahead[t][0]
+     t bcz transaction stil not competed  (it will complete only when i will sell)
+     0 bcz i have not sell, so i will sell in days ahead.
+   
 
 ​

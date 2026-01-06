@@ -8,14 +8,7 @@ Fix one element i
 
 Use two pointers (left, right) to find the remaining two numbers
 
-⏱️ Complexity
 
-Time: O(n²)
-
-Space: O(1) 
-  
-arr = [1, 4, 45, 6, 10, 8]
-k = 22
 
 
   Sorting and Two-Pointer Technique - O(n × log(n)) time and O(1) space

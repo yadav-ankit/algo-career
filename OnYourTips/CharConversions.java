@@ -1,4 +1,11 @@
 
+int num = 0;
+ for (char ch : s.toCharArray()) {
+    if (Character.isDigit(ch)) {
+        num = num * 10 + (ch - '0');
+    }
+ }
+              
 ## 🔤 ASCII Basics (must know)
 
 char ch[] = my_string.charArray();

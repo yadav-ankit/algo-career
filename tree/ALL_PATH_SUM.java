@@ -2,11 +2,11 @@
 
 We’ll cover:
 
-**2️⃣ All Root → Leaf Paths with Given Sum**
-**3️⃣ Path Sum III (ANY → ANY, downward)**
-**4️⃣ Maximum Path Sum (ANY → ANY)**
-**6️⃣ Leaf → Leaf Maximum Path Sum**
-
+**2️⃣ All Root → Leaf Paths with Given Sum
+**3️⃣ Path Sum III (ANY → ANY, downward)
+**4️⃣ Maximum Path Sum (ANY → ANY)
+**6️⃣ Leaf → Leaf Maximum Path Sum
+** Maximum Path Sum (root → ANY) (LAST)
 
 ---
 
@@ -228,5 +228,110 @@ class Solution {
 | 3️⃣     | Any        | Any      | ❌             | Prefix sum         |
 | 4️⃣     | Any        | Any      | ✅             | Post-order DP      |
 | 6️⃣     | Leaf       | Leaf     | ✅             | Post-order DP      |
+
+
+
+---
+
+## 🌳 Maximum Path Sum (**root → ANY**)
+
+
+### What the path means here
+
+* Path **must start at the root**
+* Path can end at **any node**
+* Path goes **downward only**
+* ❌ No splitting (no left + right)
+
+This single rule change makes the problem *much simpler* than max path sum (ANY → ANY).
+
+---
+
+## 🧠 Key Insight (this is the whole problem)
+
+Since the path **must start at root**:
+
+* You never compare siblings
+* You never need a global variable
+* You just keep taking the **best child**
+
+👉 This is just a **max downward path** problem.
+
+---
+
+## 🪜 Simple DFS Logic
+
+At every node:
+
+1. Compute max path sum from left child
+2. Compute max path sum from right child
+3. Take the **larger one**
+4. Add current node’s value
+
+That’s it.
+
+---
+
+## ✅ Java Solution (Clean & Optimal)
+
+```java
+class Solution {
+    public int maxPathSumRootToAny(TreeNode root) {
+        if (root == null) return Integer.MIN_VALUE;
+        return dfs(root);
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null) return Integer.MIN_VALUE;
+
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+
+        // Best downward path starting at this node
+        return node.val + Math.max(0, Math.max(left, right));
+    }
+}
+```
+
+---
+
+## 🧩 Why `Math.max(0, …)` is still needed
+
+Even though path must start at root:
+
+* You are allowed to **stop early**
+* You are NOT forced to include a negative child
+
+Example:
+
+```
+    5
+   /
+ -10
+```
+
+Correct answer: `5`, not `-5`
+
+So we drop negative branches.
+
+---
+
+## 🧠 What if all values are negative?
+
+Example:
+
+```
+   -3
+   /
+ -5
+```
+
+Result: `-3` (root itself)
+
+Why it works:
+
+* `Math.max(0, child)` ensures we don’t extend into worse paths
+* Root is always included (path must start there)
+
 
 

@@ -1,0 +1,232 @@
+## 🌳 Problems we’ll solve
+
+We’ll cover:
+
+**2️⃣ All Root → Leaf Paths with Given Sum**
+**3️⃣ Path Sum III (ANY → ANY, downward)**
+**4️⃣ Maximum Path Sum (ANY → ANY)**
+**6️⃣ Leaf → Leaf Maximum Path Sum**
+
+
+---
+
+# 2️⃣ All Root → Leaf Paths with Given Sum
+
+### Problem
+
+Return **all root-to-leaf paths** whose sum equals `target`.
+
+### Key rules
+
+* Must start at root
+* Must end at a leaf
+* No branching
+* Need to keep the **path itself**
+
+---
+
+### 🧠 Technique
+
+👉 DFS + **backtracking**
+
+---
+
+### ✅ Java Solution
+
+```java
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<List<Integer>> res = new ArrayList<>();
+        dfs(root, targetSum, new ArrayList<>(), res);
+        return res;
+    }
+
+    private void dfs(TreeNode node, int sum, List<Integer> path, List<List<Integer>> res) {
+        if (node == null) return;
+
+        path.add(node.val);
+
+        if (node.left == null && node.right == null && node.val == sum) {
+            res.add(new ArrayList<>(path));
+        } else {
+            dfs(node.left, sum - node.val, path, res);
+            dfs(node.right, sum - node.val, path, res);
+        }
+
+        path.remove(path.size() - 1); // backtrack
+    }
+}
+```
+
+⏱ `O(n)` time
+🧠 Classic backtracking pattern
+
+---
+
+# 3️⃣ Path Sum III (ANY → ANY, downward)
+
+### Problem
+
+Count number of **downward paths** whose sum equals `target`.
+
+Paths:
+
+* can start anywhere
+* can end anywhere
+* must go downward
+
+---
+
+### 🧠 Core Insight (this is huge)
+
+This is **Subarray Sum = K** applied to a tree.
+
+👉 Use **prefix sum + hashmap**
+
+---
+
+### ✅ Java Solution (Optimal)
+
+```java
+class Solution {
+    public int pathSum(TreeNode root, int targetSum) {
+        Map<Long, Integer> prefix = new HashMap<>();
+        prefix.put(0L, 1);
+        return dfs(root, 0, targetSum, prefix);
+    }
+
+    private int dfs(TreeNode node, long currSum, int target, Map<Long, Integer> prefix) {
+        if (node == null) return 0;
+
+        currSum += node.val;
+
+        int count = prefix.getOrDefault(currSum - target, 0);
+
+        prefix.put(currSum, prefix.getOrDefault(currSum, 0) + 1);
+
+        count += dfs(node.left, currSum, target, prefix);
+        count += dfs(node.right, currSum, target, prefix);
+
+        prefix.put(currSum, prefix.get(currSum) - 1); // backtrack
+
+        return count;
+    }
+}
+```
+
+⏱ `O(n)`
+🔥 Interview favorite
+🔥 Same idea as array prefix sums
+
+---
+
+# 4️⃣ Maximum Path Sum (ANY → ANY)
+
+### Problem
+
+Find maximum sum of **any path**.
+
+* start/end anywhere
+* may split at **one node**
+
+---
+
+### 🧠 Core Rule
+
+* Global answer can use **left + node + right**
+* Returned value can use **only one branch**
+
+---
+
+### ✅ Java Solution (Canonical)
+
+```java
+class Solution {
+    int maxSum = Integer.MIN_VALUE;
+
+    public int maxPathSum(TreeNode root) {
+        dfs(root);
+        return maxSum;
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null) return 0;
+
+        int left = Math.max(0, dfs(node.left));
+        int right = Math.max(0, dfs(node.right));
+
+        maxSum = Math.max(maxSum, node.val + left + right);
+
+        return node.val + Math.max(left, right);
+    }
+}
+```
+
+⏱ `O(n)`
+
+---
+
+# 6️⃣ Leaf → Leaf Maximum Path Sum
+
+### Problem
+
+Path must:
+
+* start at one leaf
+* end at another leaf
+
+⚠️ Very important constraint.
+
+---
+
+### 🧠 Key Difference
+
+You can only update the answer if **both children exist**.
+
+---
+
+### ✅ Java Solution
+
+```java
+class Solution {
+    int maxSum = Integer.MIN_VALUE;
+
+    public int maxLeafToLeaf(TreeNode root) {
+        dfs(root);
+        return maxSum;
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null) return Integer.MIN_VALUE;
+
+        if (node.left == null && node.right == null)
+            return node.val;
+
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+
+        if (node.left != null && node.right != null) {
+            maxSum = Math.max(maxSum, left + right + node.val);
+            return node.val + Math.max(left, right);
+        }
+
+        // If only one child exists
+        return node.val + (node.left != null ? left : right);
+    }
+}
+```
+
+⏱ `O(n)`
+
+---
+
+## 🧠 One Table to Rule Them All
+
+| Problem | Path Start | Path End | Split Allowed | Technique          |
+| ------- | ---------- | -------- | ------------- | ------------------ |
+| 2️⃣     | Root       | Leaf     | ❌             | DFS + backtracking |
+| 3️⃣     | Any        | Any      | ❌             | Prefix sum         |
+| 4️⃣     | Any        | Any      | ✅             | Post-order DP      |
+| 6️⃣     | Leaf       | Leaf     | ✅             | Post-order DP      |
+
+

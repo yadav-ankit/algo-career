@@ -60,3 +60,53 @@ class GfG {
         }
     }
 }
+
+
+---
+
+## Why do we need the extra `if` in Step 3 & 4?
+
+Short answer:
+👉 **To avoid re-visiting elements when the matrix collapses to a single row or column.**
+
+Without those checks, you’ll **duplicate elements**.
+
+
+---
+
+## 🧪 Case 1: Single Row Matrix (1 × N)
+
+```
+[ 1  2  3  4 ]
+```
+
+### What happens?
+
+* Step 1 ✅ → `1 2 3 4`
+* `top++` → `top > bottom`
+
+❌ If Step 3 runs **without `if (top <= bottom)`**,
+you’ll traverse the **same row again in reverse** → duplicates.
+
+✅ `if` prevents this.
+
+---
+
+## 🧪 Case 2: Single Column Matrix (N × 1)
+
+```
+[1]
+[2]
+[3]
+```
+
+### What happens?
+
+* Step 2 ✅ → `1 2 3`
+* `right--` → `left > right`
+
+❌ If Step 4 runs without `if (left <= right)`,
+you’ll traverse the **same column again upward**.
+
+
+

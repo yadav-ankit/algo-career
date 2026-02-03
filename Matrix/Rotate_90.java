@@ -16,7 +16,7 @@ class GfG {
             }
         }
 
-        // Reverse each row
+        // Reverse each row for clockwise
         for (int i = 0; i < n; i++) {
             int start = 0, end = n - 1;
             while (start < end) {
@@ -25,6 +25,19 @@ class GfG {
                 mat[i][end] = temp;
                 start++;
                 end--;
+            }
+        }
+
+
+         //  Reverse each column for anti-clockwise
+        for (int col = 0; col < n; col++) {
+            int top = 0, bottom = n - 1;
+            while (top < bottom) {
+                int temp = matrix[top][col];
+                matrix[top][col] = matrix[bottom][col];
+                matrix[bottom][col] = temp;
+                top++;
+                bottom--;
             }
         }
     }

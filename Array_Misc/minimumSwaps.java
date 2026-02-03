@@ -29,6 +29,29 @@ Input: nums = [9]
 Output: 0
 Explanation: The array is already valid, so we return 0.
 
+
+ Minimum Adjacent Swaps to Make a Valid Array
+
+Traverse the array once to find:
+
+i: index of the first minimum
+
+j: index of the last maximum
+
+Let n be the array length.
+
+If i == j, the array is already valid → 0 swaps
+
+If i < j, swaps needed:
+i + (n - 1 - j)
+
+If i > j, moving the minimum shifts the maximum right by one, so:
+i + (n - 1 - j) - 1
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+ 
 class Solution {
     public int minimumSwaps(int[] nums) {
         int n = nums.length;

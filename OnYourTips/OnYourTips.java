@@ -1,6 +1,19 @@
 Array.fill (0 , arr_name); 
 
 
+🔑 Pattern you should remember
+
+If you see:
+
+“minimum number of groups / subsequences”
+
+constraint like max − min ≤ k
+
+reordering or subsequences allowed
+
+👉 Sort first, then greedily extend until condition breaks
+ 
+-----------------
 Integer arr[] = {10, 20, 20, 30, 20, 40, 50}; 
 
 List<Integer> list = Arrays.asList(arr);

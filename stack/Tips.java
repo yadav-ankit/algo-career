@@ -1,6 +1,8 @@
 
 
 Tricks
+ In 1-3 i need count 
+ in 4th i need actual value
 
 1
 at index i ..mujhe jaan na h ..me left me kitni duur jaau aur i stricly minimum rhe
@@ -30,7 +32,7 @@ at index i ..mujhe jaan na h me right me kitni duur jaau aur i  minimum or equal
 
 
 
-3
+3 Stock Span problem
   At index i ..mujhe jaan na h ki how many consecutive days before it (including today) had price ≤ today’s price.
 i.e me left me kitni duur jaau aur i maxmum or equal to rhe
 

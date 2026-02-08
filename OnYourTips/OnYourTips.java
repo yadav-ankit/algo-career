@@ -1,5 +1,6 @@
 Array.fill (0 , arr_name); 
 
+   int MOD = 1_000_000_007;
 
 🔑 Pattern you should remember
 

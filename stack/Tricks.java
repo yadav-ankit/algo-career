@@ -4,6 +4,12 @@ Tricks
  In 1-3 i need count 
  in 4th i need actual value
 
+
+ Next Greater arr[stack.peek()] > arr[i]
+ Next Smaller arr[stack.peek()] < arr[i]
+ Prev Smaller arr[stack.peek()] > arr[i]
+ 
+
 1
 at index i ..mujhe jaan na h ..me left me kitni duur jaau aur i stricly minimum rhe
 

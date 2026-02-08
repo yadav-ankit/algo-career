@@ -47,3 +47,17 @@ i.e me left me kitni duur jaau aur i maxmum or equal to rhe
             // Push current index
             stack.push(i);
             }
+
+
+4.
+ At index i , i need next smaller element ...mujhe duur jaana h but i dont need index i need value
+
+ for (int i = 0; i < n; i++) {
+    while (!st.isEmpty() && arr[i] < arr[st.peek()]) {
+        nse[st.pop()] = arr[i];
+    }
+    st.push(i);
+}
+while (!st.isEmpty()){ 
+ nse[st.pop()] = -1; 
+}

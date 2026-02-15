@@ -5,6 +5,7 @@ Example 1:
 Input: 16
 Output: true
 
+  O(logn)
   
 class Solution {
     public boolean isPerfectSquare(int num) {

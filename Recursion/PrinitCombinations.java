@@ -79,25 +79,6 @@ class Solution {
 }
 ```
 
----
-
-# 🧪 Dry Run (n=4, k=2)
-
-```
-start=1
-pick 1 → [1]
-   pick 2 → [1,2] ✔
-   pick 3 → [1,3] ✔
-   pick 4 → [1,4] ✔
-pick 2 → [2]
-   pick 3 → [2,3] ✔
-   pick 4 → [2,4] ✔
-pick 3 → [3]
-   pick 4 → [3,4] ✔
-```
-
----
-
 # ⏱ Complexity
 
 Number of combinations:
@@ -106,9 +87,34 @@ Number of combinations:
 C(n, k) = n! / (k! * (n-k)!)
 ```
 
-* **Time:** O(C(n,k) * k)
+* **Time:** O(2^n)
 * **Space:** O(k) recursion stack
 
 ---
+
+ Given a set of distinct integers, nums, return all possible subsets (the power
+set).
+ 
+ import java.util.*;
+
+class Solution {
+
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(0, nums, new ArrayList<>(), result);
+        return result;
+    }
+
+    private void backtrack(int start,int[] nums,List<Integer> path,List<List<Integer>> result) {
+        // Add current subset
+        result.add(new ArrayList<>(path));
+
+        for (int i = start; i < nums.length; i++) {
+            path.add(nums[i]);                 // choose
+            backtrack(i + 1, nums, path, result); // explore
+            path.remove(path.size() - 1);      // un-choose
+        }
+    }
+}
 
 

@@ -1,4 +1,79 @@
+Implement Your Own Fail-Fast Iterator
 
+We’ll build:
+
+✔ Custom List
+✔ modCount tracking
+✔ Iterator that fails fast
+
+Step 1️⃣ Custom Collection
+import java.util.*;
+
+class MyList<E> implements Iterable<E> {
+
+    private Object[] data = new Object[10];
+    private int size = 0;
+
+    // modification counter
+    private int modCount = 0;
+
+    public void add(E val) {
+        data[size++] = val;
+        modCount++;
+    }
+
+    public E get(int index) {
+        return (E) data[index];
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public Iterator<E> iterator() {
+        return new MyIterator();
+    }
+
+    
+Step 2️⃣ Fail-Fast Iterator
+    private class MyIterator implements Iterator<E> {
+
+        private int cursor = 0;
+        private int expectedModCount = modCount;
+
+        public boolean hasNext() {
+            checkForModification();
+            return cursor < size;
+        }
+
+        public E next() {
+            checkForModification();
+            return (E) data[cursor++];
+        }
+
+        private void checkForModification() {
+            if (modCount != expectedModCount) {
+                throw new ConcurrentModificationException();
+            }
+        }
+    }
+}
+Step 3️⃣ Test
+public class Main {
+    public static void main(String[] args) {
+
+        MyList<Integer> list = new MyList<>();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        Iterator<Integer> it = list.iterator();
+
+        list.add(40);   // structural change
+
+        it.next();      // 💥 Exception thrown
+    }
+}
 
 ---
 

@@ -1,5 +1,14 @@
 import java.util.*;
 
+Includes:
+
+✅ Path Sum
+✅ Path XOR
+✅ Distance
+✅ LCA
+✅ K-th Ancestor
+
+    
 public class Main {
 
     static int N = 100005;
@@ -8,10 +17,12 @@ public class Main {
     static List<Integer>[] tree = new ArrayList[N];
     static int[][] up = new int[N][LOG];
     static int[] depth = new int[N];
-    static int[] value = new int[N];
-    static int[] dist = new int[N]; // root → node sum
 
-    // DFS to build depth, dist, and binary lifting table
+    static int[] value = new int[N];
+    static int[] dist = new int[N];
+    static int[] xor = new int[N];
+
+    // DFS
     static void dfs(int node, int parent) {
         up[node][0] = parent;
 
@@ -26,21 +37,20 @@ public class Main {
             if (child != parent) {
                 depth[child] = depth[node] + 1;
                 dist[child] = dist[node] + value[child];
+                xor[child] = xor[node] ^ value[child];
                 dfs(child, node);
             }
         }
     }
 
-    // LCA using binary lifting
+    // LCA
     static int lca(int u, int v) {
         if (depth[u] < depth[v]) {
-            int temp = u;
-            u = v;
-            v = temp;
+            int temp = u; u = v; v = temp;
         }
 
-        // bring u to same depth as v
         int diff = depth[u] - depth[v];
+
         for (int j = 0; j < LOG; j++) {
             if ((diff & (1 << j)) != 0) {
                 u = up[u][j];
@@ -49,7 +59,6 @@ public class Main {
 
         if (u == v) return u;
 
-        // lift both up
         for (int j = LOG - 1; j >= 0; j--) {
             if (up[u][j] != -1 && up[u][j] != up[v][j]) {
                 u = up[u][j];
@@ -60,10 +69,33 @@ public class Main {
         return up[u][0];
     }
 
-    // Path sum query
+    // K-th ancestor
+    static int kthAncestor(int node, int k) {
+        for (int j = 0; j < LOG; j++) {
+            if ((k & (1 << j)) != 0) {
+                node = up[node][j];
+                if (node == -1) return -1;
+            }
+        }
+        return node;
+    }
+
+    // Path SUM
     static int pathSum(int u, int v) {
         int lca = lca(u, v);
         return dist[u] + dist[v] - 2 * dist[lca] + value[lca];
+    }
+
+    // Path XOR
+    static int pathXor(int u, int v) {
+        int lca = lca(u, v);
+        return xor[u] ^ xor[v] ^ value[lca];
+    }
+
+    // Distance
+    static int distance(int u, int v) {
+        int lca = lca(u, v);
+        return depth[u] + depth[v] - 2 * depth[lca];
     }
 
     public static void main(String[] args) {
@@ -74,28 +106,43 @@ public class Main {
             tree[i] = new ArrayList<>();
         }
 
-        // Tree edges
+        // Tree
         addEdge(1, 2);
         addEdge(1, 3);
         addEdge(2, 4);
         addEdge(2, 5);
 
-        // Node values
+        // Values
         value[1] = 10;
         value[2] = 5;
         value[3] = 8;
         value[4] = 2;
         value[5] = 3;
 
-        // Initialize root
+        // Root setup
         depth[1] = 0;
         dist[1] = value[1];
+        xor[1] = value[1];
 
         dfs(1, -1);
 
-        // Queries
-        System.out.println(pathSum(4, 5)); // 10
-        System.out.println(pathSum(4, 3)); // 2+5+10+8 = 25
+        // 🔥 Queries
+
+        System.out.println("Path Sum (4,5): " + pathSum(4, 5)); // 10
+        System.out.println("Path XOR (4,5): " + pathXor(4, 5)); // 4
+        System.out.println("Distance (4,5): " + distance(4, 5)); // 2
+
+        System.out.println();
+
+        System.out.println("Path Sum (4,3): " + pathSum(4, 3)); // 25
+        System.out.println("Distance (4,3): " + distance(4, 3)); // 3
+
+        System.out.println();
+
+        // 🔥 K-th Ancestor
+        System.out.println("1st ancestor of 5: " + kthAncestor(5, 1)); // 2
+        System.out.println("2nd ancestor of 5: " + kthAncestor(5, 2)); // 1
+        System.out.println("3rd ancestor of 5: " + kthAncestor(5, 3)); // -1
     }
 
     static void addEdge(int u, int v) {

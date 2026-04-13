@@ -1,6 +1,7 @@
 
+// https://leetcode.com/problems/find-building-where-alice-and-bob-can-meet/
 
-1. First Greater Element in Range (Classic Combo)
+1. First Greater Element in Range
 💡 Problem
 
 Given array arr, for a query (l, r, x):

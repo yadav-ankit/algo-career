@@ -13,6 +13,22 @@ Segment Tree stores max
 If max in range ≤ x → ❌ no answer
 Else → go down the tree and binary search inside segment tree
 
+
+
+Here
+    🔹 Your Building Problem
+
+“Find first index j > b such that height[j] > threshold”
+
+👉 This is NOT [l, r]
+👉 It is effectively:
+
+search in range [b+1, n-1]
+
+    and value > max(arr[l], arr[r])
+
+
+    
 import java.util.*;
 
 class Solution {

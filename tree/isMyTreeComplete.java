@@ -1,3 +1,27 @@
+⏱ Complexity
+Time: O(n)
+Space: O(h) (recursion stack, worst case O(n))
+🔥 Intuition Example
+
+Consider:
+
+    1
+   / \
+  2   3
+   \
+    5
+
+Indexes:
+
+1 → 0
+2 → 1
+3 → 2
+5 → 4
+
+Total nodes = 4
+But index 4 ≥ 4 ❌ → Not complete
+
+
 class Solution {
     public boolean isCompleteTree(TreeNode root) {
         int totalNodes = countNodes(root);

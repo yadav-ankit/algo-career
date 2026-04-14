@@ -1,3 +1,35 @@
+
+💡 Key Insight (THIS unlocks it)
+
+👉 When you delete a node:
+
+Its children can become new roots
+
+👉 So you must:
+
+Decide deletion after processing children
+
+
+    ⚡ Why Post-order here?
+
+Let’s say:
+
+    1
+   /
+  2   (delete 2)
+ /
+4
+
+If you delete 2:
+
+You must already know:
+4 is processed and ready
+Then you add 4 to forest
+
+👉 That’s why:
+
+children first → then decision
+    
 class Solution {
     public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
         Set<Integer> deleteSet = new HashSet<>();

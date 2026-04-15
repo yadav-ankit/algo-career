@@ -176,7 +176,7 @@ class Solution {
 🔥 Interview favorite
 🔥 Same idea as array prefix sums
 
----
+------------------------------------------------------------------------------------
 
 # 4️⃣ Maximum Path Sum (ANY → ANY)
 
@@ -222,7 +222,7 @@ class Solution {
 
 ⏱ `O(n)`
 
----
+------------------------------------------------------------------------------------
 
 # 6️⃣ Leaf → Leaf Maximum Path Sum
 
@@ -276,7 +276,7 @@ class Solution {
 
 ⏱ `O(n)`
 
----
+------------------------------------------------------------------------------------
 
 ## 🧠 One Table to Rule Them All
 
@@ -289,7 +289,7 @@ class Solution {
 
 
 
----
+------------------------------------------------------------------------------------
 
 ## 🌳 Maximum Path Sum (**root → ANY**)
 
@@ -303,7 +303,7 @@ class Solution {
 
 This single rule change makes the problem *much simpler* than max path sum (ANY → ANY).
 
----
+------------------------------------------------------------------------------------
 
 ## 🧠 Key Insight (this is the whole problem)
 
@@ -315,7 +315,7 @@ Since the path **must start at root**:
 
 👉 This is just a **max downward path** problem.
 
----
+------------------------------------------------------------------------------------
 
 ## 🪜 Simple DFS Logic
 
@@ -328,7 +328,7 @@ At every node:
 
 That’s it.
 
----
+------------------------------------------------------------------------------------
 
 ## ✅ Java Solution (Clean & Optimal)
 
@@ -351,7 +351,7 @@ class Solution {
 }
 ```
 
----
+------------------------------------------------------------------------------------
 
 ## 🧩 Why `Math.max(0, …)` is still needed
 

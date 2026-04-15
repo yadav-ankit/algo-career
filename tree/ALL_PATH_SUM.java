@@ -29,7 +29,7 @@ Return **all root-to-leaf paths** whose sum equals `target`.
 
 👉 DFS + **backtracking**
 
----
+------------------------------------------------------------------------------------
 
 ### ✅ Java Solution
 
@@ -57,12 +57,70 @@ class Solution {
     }
 }
 ```
+------------------------------------------------------------------------------------
+🌿 Problem
 
-⏱ `O(n)` time
-🧠 Classic backtracking pattern
+Check if there exists at least one root-to-leaf path such that:
 
----
+sum of nodes = target
 
+👉 Return true as soon as you find one.
+
+class Solution {
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if (root == null) return false;
+
+        // leaf node
+        if (root.left == null && root.right == null) {
+            return targetSum == root.val;
+        }
+
+        int remaining = targetSum - root.val;
+
+        return hasPathSum(root.left, remaining) ||
+               hasPathSum(root.right, remaining);
+    }
+}
+------------------------------------------------------------------------------------
+
+Now print this path...... again backtracking with dfs
+
+    class Solution {
+    public boolean hasPathSumPrint(TreeNode root, int targetSum) {
+        List<Integer> path = new ArrayList<>();
+        return dfs(root, targetSum, path);
+    }
+
+    private boolean dfs(TreeNode node, int target, List<Integer> path) {
+        if (node == null) return false;
+
+        // choose
+        path.add(node.val);
+
+        // leaf check
+        if (node.left == null && node.right == null) {
+            if (target == node.val) {
+                System.out.println(path); // 🔥 print path
+                return true;
+            }
+        }
+
+        int remaining = target - node.val;
+
+        if (dfs(node.left, remaining, path) ||
+            dfs(node.right, remaining, path)) {
+            return true; // stop once one path found
+        }
+
+        // backtrack
+        path.remove(path.size() - 1);
+
+        return false;
+    }
+}
+
+------------------------------------------------------------------------------------
+    
 # 3️⃣ Path Sum III (ANY → ANY, downward)
 
 ### Problem

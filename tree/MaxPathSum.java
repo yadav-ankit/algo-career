@@ -94,6 +94,7 @@ class Solution {
         int pathSum = node.val + leftSum + rightSum;
         maxSum = Math.max(maxSum, pathSum);
 
+      // why only left or only right bcz its mentioned in the question that one node can be only counted once
         return node.val + Math.max(leftSum, rightSum);
     }
 }

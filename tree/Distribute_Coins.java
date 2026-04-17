@@ -1,0 +1,32 @@
+https://leetcode.com/problems/distribute-coins-in-binary-tree/description/
+
+
+You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. There are n coins in total throughout the whole tree.
+
+In one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.
+
+Return the minimum number of moves required to make every node have exactly one coin.
+
+
+
+class Solution {
+    int moves = 0;
+    
+    public int distributeCoins(TreeNode root) {
+        dfs(root);
+        return moves;
+    }
+    
+    private int dfs(TreeNode node) {
+        if (node == null) return 0;
+        
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+        
+        // count moves
+        moves += Math.abs(left) + Math.abs(right);
+        
+        // return balance to parent ... -1 bcz node ko khud ek rkhni h ..baaki vo apne parent ko bta dega
+        return node.val + left + right - 1;
+    }
+}

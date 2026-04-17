@@ -8,6 +8,20 @@ The node is currently uninfected.
 The node is adjacent to an infected node.
 Return the number of minutes needed for the entire tree to be infected.
 
+
+  binary tree doesn’t have parent pointers → so first convert it into a graph (adjacency list).
+
+Then:
+
+Start BFS from the start node
+Each level = 1 minute
+Return total time taken to infect all nodes
+⚡ Approach
+Build graph using DFS
+Run BFS from start
+Track visited nodes
+Count levels (time)
+  
   
 class Solution {
     public int amountOfTime(TreeNode root, int start) {

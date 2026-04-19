@@ -8,17 +8,6 @@ In this context downward path means a path that starts at some node and goes dow
 
   Time = O(Num of nodes in tree * Num of nodes in Linked List)
   
-
-hasPathsum ka bhai ....also same as PathSum_3 which is
-  Count number of paths where:
-
-Path can start from ANY node
-Path must go downward
-Sum = target
-
-
-  
-
 class Solution {
 
     public boolean isSubPath(ListNode head, TreeNode root) {

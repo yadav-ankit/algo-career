@@ -76,13 +76,69 @@
 ### Depth → easy in traversal
 
 ```java
-dfs(node, depth + 1);
+
+        Max depth == same as height
+        
+public int maxDepth(TreeNode root) {
+    if (root == null) return 0;
+
+    int left = maxDepth(root.left);
+    int right = maxDepth(root.right);
+
+    return 1 + Math.max(left, right);
+}
+
+
+        Min
+
+                in mindepth why can't we just u
+                se min instead of max
+                Because min() will happily pick a path that doesn’t actually reach a leaf 
+
+
+                In max depth, both sides are always valid:
+
+1 + Math.max(left, right) // ✅ always safe
+
+But in min depth, one side might be null → which gives depth 0.
+
+If you do:
+
+1 + Math.min(left, right) // ❌ can pick invalid path
+
+you might accidentally choose a path that doesn’t lead to a leaf at all.
+        
+        
+public int minDepth(TreeNode root) {
+    if (root == null) return 0;
+
+    // If left subtree is null, ignore it
+    if (root.left == null) {
+        return 1 + minDepth(root.right);
+    }
+
+    // If right subtree is null, ignore it
+    if (root.right == null) {
+        return 1 + minDepth(root.left);
+    }
+
+    // Both children exist
+    return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+}
+        
 ```
 
 ### Height → requires postorder
 
 ```java
-height = 1 + max(left, right);
+public int maxHeight(TreeNode root) {
+    if (root == null) return 0;
+
+    int left = maxHeight(root.left);
+    int right = maxHeight(root.right);
+
+    return 1 + Math.max(left, right);
+}
 ```
 
 👉 That’s why:

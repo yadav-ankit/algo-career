@@ -15,7 +15,7 @@ class Solution {
 
 
 https://leetcode.com/problems/flip-equivalent-binary-trees/description/
-Core Idea (THIS is everything)
+Core Idea
 
 At every node, only 2 possibilities exist:
 
@@ -29,7 +29,7 @@ left1 ↔ right2  AND  right1 ↔ left2
 
 👉 If either works → trees are equivalent
 
-🌳 Recursive Thinking (Super Important)
+🌳 Recursive Thinking
 
 At each node:
 

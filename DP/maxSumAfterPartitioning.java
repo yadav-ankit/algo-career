@@ -19,10 +19,7 @@ class Solution {
 
                 currMax = Math.max(currMax, arr[i - j]);
 
-                t[size] = Math.max(
-                    t[i],
-                    (j * currMax) + t[i - j]
-                );
+                t[i] = Math.max(t[i],(j * currMax) + t[i - j]);
             }
         }
 

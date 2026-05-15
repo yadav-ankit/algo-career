@@ -11,17 +11,17 @@ class Solution {
         // t[i] = max sum for first i elements
         int[] t = new int[n + 1];
 
-        for (int size = 1; size <= n; size++) {
+        for (int i = 1; i <= n; i++) {
 
             int currMax = -1;
 
-            for (int j = 1; j <= k && size - j >= 0; j++) {
+            for (int j = 1; j <= k && i - j >= 0; j++) {
 
-                currMax = Math.max(currMax, arr[size - j]);
+                currMax = Math.max(currMax, arr[i - j]);
 
                 t[size] = Math.max(
-                    t[size],
-                    (j * currMax) + t[size - j]
+                    t[i],
+                    (j * currMax) + t[i - j]
                 );
             }
         }

@@ -1,45 +1,40 @@
 
-class Solution {
+int solve(int idx) {
 
-    int[] dp;
+    if (idx == n)
+        return base;
 
-    int solve(int idx, ...) {
+    if (dp[idx] exists)
+        return dp[idx];
 
-        // Base case
-        if (...) {
-            return ...;
-        }
+    ans = ?
 
-        // Memoization
-        if (dp[idx] != -1) {
-            return dp[idx];
-        }
+    for (int j = idx; j < n; j++) {
 
-        int ans = ...;
-
-        // Choices
-        for (...) {
+        if (partition idx..j valid) {
 
             ans =
                 combine(
-                    ans,
-                    solve(nextState)
+                    currentPartition,
+                    solve(j + 1)
                 );
         }
-
-        // Cache + return
-        return dp[idx] = ans;
     }
 
-    public int function(...) {
-
-        dp = new int[n];
-
-        Arrays.fill(dp,-1);
-
-        return solve(0,...);
-    }
+    return dp[idx] = ans;
 }
+
+Only combine() changes:
+
+Problem	combine
+Word Break	OR
+Decode Ways	+
+Partition Max Sum	max
+Palindrome Min Cuts	min
+Extra Characters	min
+Word Break II	append strings
+
+
 
 
 

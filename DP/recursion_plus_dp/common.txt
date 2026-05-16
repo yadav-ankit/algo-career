@@ -1,0 +1,83 @@
+
+class Solution {
+
+    int[] dp;
+
+    int solve(int idx, ...) {
+
+        // Base case
+        if (...) {
+            return ...;
+        }
+
+        // Memoization
+        if (dp[idx] != -1) {
+            return dp[idx];
+        }
+
+        int ans = ...;
+
+        // Choices
+        for (...) {
+
+            ans =
+                combine(
+                    ans,
+                    solve(nextState)
+                );
+        }
+
+        // Cache + return
+        return dp[idx] = ans;
+    }
+
+    public int function(...) {
+
+        dp = new int[n];
+
+        Arrays.fill(dp,-1);
+
+        return solve(0,...);
+    }
+}
+
+
+
+
+so dp[array] is only for memoization , what are we returning ? in dp questions we generally return dp[n]
+
+You’ve hit one of the biggest conceptual confusions in DP:
+
+In memoization, are we returning from recursion or returning from dp[]?
+
+Answer:
+
+Both, depending on the situation.
+
+Let’s separate them.
+
+Memoization (Top-down DP)
+
+Example:
+
+int solve(int idx)
+
+We return:
+
+return solve(0);
+
+Inside:
+
+if (dp[idx] != -1)
+    return dp[idx];
+
+...
+
+return dp[idx] = answer;
+
+Notice:
+
+We return recursion result,
+but cache it in dp.
+
+dp[] is only storage.

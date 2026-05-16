@@ -15,6 +15,21 @@ reordering or subsequences allowed
 👉 Sort first, then greedily extend until condition breaks
  
 -----------------
+
+
+   private boolean isPalindrome(String s,int l,int r) {
+        while (l < r) {
+            if (s.charAt(l)!= s.charAt(r)) {
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+
+
+-----------------
 Integer arr[] = {10, 20, 20, 30, 20, 40, 50}; 
 
 List<Integer> list = Arrays.asList(arr);

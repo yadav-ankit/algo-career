@@ -1,6 +1,10 @@
 
 https://leetcode.com/problems/palindrome-partitioning-ii/description/
 
+Palindrome Partitioning II (basic DP)
+Time O(n³)
+Space O(n)
+    
 class Solution {
 
     int[] dp;
@@ -161,3 +165,55 @@ Memo:
 dp[idx]
 
   -----------------------------------------
+
+https://leetcode.com/problems/palindrome-partitioning/description/
+   
+Complexity	Value
+Time	O(n * 2^n)
+Aux Space	O(n)
+    
+
+    class Solution {
+
+    List<List<String>> ans = new ArrayList<>();
+
+    public List<List<String>> partition(String s) {
+        solve(0, s, new ArrayList<>());
+        return ans;
+    }
+
+    private void solve(int idx, String s, List<String> path) {
+
+        if (idx == s.length()) {
+            ans.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (int j = idx; j < s.length(); j++) {
+
+            if (isPalindrome(s, idx, j)) {
+
+                path.add(s.substring(idx, j + 1));
+
+                solve(j + 1, s, path);
+
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+
+    private boolean isPalindrome(String s, int l, int r) {
+
+        while (l < r) {
+
+            if (s.charAt(l) != s.charAt(r)) {
+                return false;
+            }
+
+            l++;
+            r--;
+        }
+
+        return true;
+    }
+}

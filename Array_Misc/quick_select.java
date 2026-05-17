@@ -52,3 +52,55 @@ class Solution {
         nums[j] = temp;
     }
 }
+
+
+--------
+
+
+  class Solution {
+
+    public void quickSort(int[] nums) {
+        quickSort(nums, 0, nums.length - 1);
+    }
+
+    private void quickSort(int[] nums, int left, int right) {
+        if (left >= right)
+            return;
+
+        int pivotIndex = partition(nums, left, right);
+
+        quickSort(nums, left, pivotIndex - 1);
+        quickSort(nums, pivotIndex + 1, right);
+    }
+
+    private int partition(int[] nums, int left, int right) {
+        int pivot = nums[left];
+        int i = left;
+        int j = right;
+
+        while (i <= j) {
+
+            if (nums[i] < pivot && nums[j] > pivot) {
+                swap(nums, i, j);
+                i++;
+                j--;
+            }
+
+            if (nums[i] >= pivot)
+                i++;
+
+            if (nums[j] <= pivot)
+                j--;
+        }
+
+        swap(nums, left, j);
+
+        return j;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}

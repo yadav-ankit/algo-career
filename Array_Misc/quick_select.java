@@ -22,6 +22,7 @@ class Solution {
         }
     }
 
+  // objective is aftet this method pivot is placed at right index ..so all left elements are smaller and right r bigger
     private int partition(int[] nums, int left, int right) {
         int pivot = nums[left];
         int i = left+1;
@@ -29,6 +30,8 @@ class Solution {
 
         while (i <= j) {
 
+          // saying: if nums[i] is smaller then pivot and nums[j[ is bigger then please swap
+          // i want pivot to correctly placed
             if (nums[i] < pivot && nums[j] > pivot) {
                 swap(nums, i, j);
                 i++;

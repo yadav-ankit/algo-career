@@ -2,6 +2,18 @@ https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/descriptio
 
 same like aggrsive cows problem
 
+for each iteration, canShip() scans the whole array:
+O(N)
+
+So total:
+
+O(N * log(sum(weights)))
+
+where:
+
+N = number of packages
+sum(weights) = total weight of all packages
+    
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
 

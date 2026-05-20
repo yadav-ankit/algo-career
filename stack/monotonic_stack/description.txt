@@ -1,0 +1,74 @@
+
+Monotonic stack is one of those patterns where after 10–15 problems, you start spotting it instantly.
+
+What is a monotonic stack?
+
+A stack that maintains elements in sorted order:
+
+Increasing stack
+
+Top always has larger values:
+
+1
+3
+5
+8   <- top
+
+When smaller comes:
+
+new = 4
+
+pop 8
+pop 5
+
+push 4
+
+stack:
+1 3 4
+
+Used for finding smaller elements.
+
+Decreasing stack
+
+Stack:
+
+8
+6
+4
+2
+
+When bigger comes:
+
+new = 7
+
+pop 2
+pop 4
+pop 6
+
+push 7
+
+stack:
+8 7
+
+Used for finding greater elements.
+
+
+  Common problems to do (important)
+Easy
+
+Next Greater Element I
+Daily Temperatures
+Stock Span Problem
+
+Medium
+
+Next Greater Element II
+Remove K Digits
+Sum of Subarray Minimums
+Trapping Rain Water
+
+Hard / SDE-3 level
+
+Largest Rectangle in Histogram
+Maximal Rectangle
+Remove Duplicate Letters

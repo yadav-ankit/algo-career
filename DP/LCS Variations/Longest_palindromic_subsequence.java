@@ -25,22 +25,27 @@ Example:
 S = "agbcba"
 
 Reverse:
-
 abcbga
 
 Find:
-
-LCS(
-S,
-reverse(S)
-)
+LCS(S,reverse(S))
 
 Result:
-
 abcba
 
 Length:
-
 5
 
 That is the trick.
+
+  -------- -------- -------- -------- -------- -------- -------- -------- -------- -------- --------
+
+  Minimum deletions to make palindrome
+
+and
+
+Minimum insertions to make palindrome
+
+Both are:
+
+n - LPS

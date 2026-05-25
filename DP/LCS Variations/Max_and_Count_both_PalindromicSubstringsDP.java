@@ -9,25 +9,32 @@ O(n²)
   
 public class CountPalindromicSubstringsDP {
 
-    static int count(String s) {
+    static void solve(String s) {
 
         int n = s.length();
+
         boolean[][] dp = new boolean[n][n];
 
         int count = 0;
+        int maxLen = 0;
 
         // length = 1
         for (int i = 0; i < n; i++) {
             dp[i][i] = true;
+
             count++;
+            maxLen = Math.max(maxLen, 1);
         }
 
         // length = 2
         for (int i = 0; i < n - 1; i++) {
 
             if (s.charAt(i) == s.charAt(i + 1)) {
+
                 dp[i][i + 1] = true;
+
                 count++;
+                maxLen = Math.max(maxLen, 2);
             }
         }
 
@@ -39,21 +46,23 @@ public class CountPalindromicSubstringsDP {
                 int j = i + len - 1;
 
                 if (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]) {
+
                     dp[i][j] = true;
+
                     count++;
+                    maxLen = Math.max(maxLen, j - i + 1);
                 }
             }
         }
 
-        return count;
+        System.out.println("Count = " + count);
+        System.out.println("Max palindrome length = " + maxLen);
     }
 
 
     public static void main(String[] args) {
 
-        System.out.println(
-                count("aaa")
-        );
+        solve("aaa");
     }
 }
 

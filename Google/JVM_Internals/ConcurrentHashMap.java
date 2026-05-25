@@ -2,6 +2,18 @@
 
 import java.util.concurrent.locks.ReentrantLock;
 
+class Node<K,V> {
+
+    K key;
+    V value;
+    Node<K,V> next;
+
+    Node(K key, V value){
+        this.key = key;
+        this.value = value;
+    }
+}
+
 class MyConcurrentHashMap<K,V> {
 
     private static final int CAPACITY = 16;

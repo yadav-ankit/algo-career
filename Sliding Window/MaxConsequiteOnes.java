@@ -1,28 +1,24 @@
-Given a binary array, find the maximum number of consecutive 1s in this array if you can flip at most one 0. 
+Given a binary array, find the maximum number of consecutive 1s in this array if you can flip at most k 0's. 
 
-Example 1: 
- 
+ https://leetcode.com/problems/max-consecutive-ones-iii/description/
 
-Input: [1,0,1,1,0] 
-Output: 4 
 
-public int findMaxConsecutiveOnes(int[] arr) { 
-    int maxCount = 0; 
-    int zeroCount = 0; 
-    int i = 0; 
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        int left = 0, zeroCount = 0, max = 0;
 
-    for (int j = 0; j < arr.length; j++) { 
-        if (arr[j] == 0) { 
-            zeroCount++; 
-        } 
+        for(int right = 0; right < nums.length; right++) {
+            if(nums[right] == 0) zeroCount++;
 
-        while (zeroCount > 1) { 
-            if (arr[i] == 0) { 
-                zeroCount--; 
-            } 
-            i++; 
-        } 
-        maxCount = Math.max(maxCount, j - i + 1); 
-    } 
-    return maxCount; 
-} 
+            while(zeroCount > k) {
+                if(nums[left] == 0) zeroCount--;
+                left++;
+            }
+
+            max = Math.max(max, right - left + 1);
+        }
+
+        return max;
+    }
+}
+

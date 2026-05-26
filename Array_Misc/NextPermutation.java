@@ -64,6 +64,7 @@ class Solution {
             swap(nums, i, j);
         }
 
+        // for descinding array i will be at -1
         // Step 3: reverse suffix
         reverse(nums, i + 1, n - 1);
     }

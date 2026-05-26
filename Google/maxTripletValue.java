@@ -1,5 +1,6 @@
 Given n islands, each islands has some value. Connections are there between some islands.
-Select a group of 3 islands A, B, C such that they are directly connected (no other island in between) and the sum of values of these 3 islands is maximum.
+Select a group of 3 islands A, B, C such that they are directly connected (no other island in between) 
+  and the sum of values of these 3 islands is maximum.
 
 
 Solved this using graph traversal (store top 3 connected islands at the beginning of adjacency list,

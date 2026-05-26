@@ -1,6 +1,12 @@
 https://github.com/doocs/leetcode/blob/main/solution/1200-1299/1254.Number%20of%20Closed%20Islands/README_EN.md
 
 
+For closed islands, a void dfs() alone is not enough, because besides visiting cells, you also need to know:
+
+Did this island touch the boundary?
+
+Your void dfs() loses that information.
+    
 class Solution {
 
     int rows;

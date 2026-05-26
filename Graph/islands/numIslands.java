@@ -1,3 +1,10 @@
+https://leetcode.com/problems/number-of-islands/description/ 
+---> numIslands (code below)
+
+    
+https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1
+(just use map on top of numIslands problem)
+
 class Solution {
 
     int rows;

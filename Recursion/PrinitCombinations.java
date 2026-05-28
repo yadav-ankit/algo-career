@@ -110,6 +110,9 @@ class Solution {
         result.add(new ArrayList<>(path));
 
         for (int i = start; i < nums.length; i++) {
+
+          if(i > start && nums[i] == nums[i-1] ; continue; // if we DONT want duplicates
+         
             path.add(nums[i]);                 // choose
             backtrack(i + 1, nums, path, result); // explore
             path.remove(path.size() - 1);      // un-choose

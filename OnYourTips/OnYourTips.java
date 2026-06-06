@@ -1,3 +1,10 @@
+Time
+   
+logn < n < nlogn < n^2 <n^3 < 2^n < 3^n <n! <n^n
+
+
+
+   
 Array.fill (0 , arr_name); 
 
    int MOD = 1_000_000_007;

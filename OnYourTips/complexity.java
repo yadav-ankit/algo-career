@@ -86,7 +86,3 @@ Map
 | LinkedHashMap | O(1)    | O(log n) |
 
 Since Java 8, heavily-collided hash buckets become balanced trees, making worst-case operations O(log n) instead of O(n).
-
-For coding interviews, the 10 structures worth memorizing are:
-
-**Array, ArrayList, LinkedList, HashMap, HashSet, TreeMap, TreeSet, PriorityQueue, ArrayDeque, Trie.** These cover ~95% of data structure questions.

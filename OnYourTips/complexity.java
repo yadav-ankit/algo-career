@@ -86,3 +86,13 @@ Map
 | LinkedHashMap | O(1)    | O(log n) |
 
 Since Java 8, heavily-collided hash buckets become balanced trees, making worst-case operations O(log n) instead of O(n).
+
+
+     TreeMap<Integer, String> map = new TreeMap<>();
+
+map.put(10, "A");
+map.put(30, "B");
+map.put(20, "C");
+
+System.out.println(map.firstKey()); // 10
+System.out.println(map.lastKey());  // 30

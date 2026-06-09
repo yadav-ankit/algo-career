@@ -1,4 +1,14 @@
 
+When you create an ArrayList in Java using the default constructor, its initial size is 0, while its default initial capacity is 10
+
+  new ArrayList<>();      // capacity becomes 10 on first add
+new ArrayList<>(1000);  // capacity 1000 immediately
+
+When capacity is exhausted, Java grows by 1.5x
+
+  newCapacity = oldCapacity * 1.5
+
+  ----------------
 ArrayList Operations Cheat Sheet
 
   List<Integer> list = new ArrayList<>();

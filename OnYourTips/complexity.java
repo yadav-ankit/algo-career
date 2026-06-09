@@ -25,6 +25,15 @@ Here's a handy interview-focused Java Data Structures complexity matrix.
 
 ---
 
+     Min Heap (default)
+PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+Top element = smallest.
+
+Max Heap
+PriorityQueue<Integer> maxHeap =
+        new PriorityQueue<>(Collections.reverseOrder());
+
 ### Sorted Operations
 
 | Data Structure | Min      | Max      | Floor/Ceil | Kth Smallest |

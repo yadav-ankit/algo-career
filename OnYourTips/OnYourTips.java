@@ -3,6 +3,16 @@ Time
 logn < n < nlogn < n^2 <n^3 < 2^n < 3^n <n! <n^n
 
 
+   ----------
+
+define 2d array  
+   
+   int[][] dirs = {{0,1},{0,-1},{1,0},{-1,0}};
+
+   for (int[] d : dirs) {
+      int nr = r + d[0], nc = c + d[1];
+   }
+   
 suppose u want to store pair of elements in array / queue
     Queue<int[]> q = new LinkedList<>();
 

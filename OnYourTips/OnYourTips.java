@@ -18,6 +18,9 @@ Array.fill (0 , arr_name);
  char map[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
 
 
+Supose u r parsing a string and for each character u want to check if its > A 
+    if ('A' <= shortURL.charAt(i))
+
    int MOD = 1_000_000_007;
 
 🔑 Pattern you should remember

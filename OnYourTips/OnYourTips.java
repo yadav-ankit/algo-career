@@ -14,6 +14,10 @@ q.add(new int[]{nx, ny});
 ----------------------------------
 Array.fill (0 , arr_name); 
 
+ // Map to store 62 possible characters
+ char map[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
+
+
    int MOD = 1_000_000_007;
 
 🔑 Pattern you should remember

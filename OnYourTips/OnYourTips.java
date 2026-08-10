@@ -3,8 +3,15 @@ Time
 logn < n < nlogn < n^2 <n^3 < 2^n < 3^n <n! <n^n
 
 
+suppose u want to store pair of elements in array / queue
+    Queue<int[]> q = new LinkedList<>();
 
-   
+int[] cell = q.poll();
+int x = cell[0];
+int y = cell[1];
+q.add(new int[]{nx, ny});
+
+----------------------------------
 Array.fill (0 , arr_name); 
 
    int MOD = 1_000_000_007;

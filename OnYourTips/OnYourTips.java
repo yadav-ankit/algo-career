@@ -211,3 +211,13 @@ public int compare(Pair p1, Pair p2)  {
      int sum2 = p2.first + p2.second;  
    return Integer.compare(sum1, sum2);  
 } }); 
+
+
+
+// anonymous class style
+Comparator<Map.Entry<String, Integer>> byValue = new Comparator<Map.Entry<String, Integer>>() {
+    @Override
+    public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
+        return a.getValue() - b.getValue();  // ascending
+    }
+};

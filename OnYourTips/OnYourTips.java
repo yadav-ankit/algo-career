@@ -5,6 +5,19 @@ logn < n < nlogn < n^2 <n^3 < 2^n < 3^n <n! <n^n
 
    ----------
 
+   for sliding window always take r - l + 1;  it gives number of elements b/w l,r (both included) provided array elements are starting from index 0;
+
+   for 1 based arrays it changes r-l;
+
+
+ if u r given in constraint then only lowercase alphabets then u can take
+
+    int map[] = new map[26];
+
+   map[s.charAt(i) - 'a']
+
+      -----------------
+   
 define 2d array  
    
    int[][] dirs = {{0,1},{0,-1},{1,0},{-1,0}};

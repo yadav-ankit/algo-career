@@ -7,6 +7,11 @@ Next smaller element --> start from the first index and keep checking stack ..ag
 For Print all paths use Strings not List bcz strings are immutable
 every += creates a brand new String, it never modifies the original.
 
+and for list
+new ArrayList<>(path) takes a PHOTO at that moment
+path = [1,2]  →  new ArrayList<>(path)  =  independent copy [1,2]
+Even if path changes later, the copy is unaffected. That's the snapshot.
+
 if u use List then u have to use ans.add(new ArrayList(path));
 and then backtrack in the end like path.remove(path.size() -1);
 

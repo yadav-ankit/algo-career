@@ -1,9 +1,10 @@
 
 
 1. for LRU cache  = Map + Double LL
-  - we store key as index or id and value as Node
+  - we store key as index or id and value as Node and in LL all are Nodes
   - Why can't i use just a LL bcz i want get in O(1) 
   - Why can't i use just a Map bcz i want to maintain order of elements(Node)
+  -  Note that if i call remove(Node) i dont have to iterate the list ..since its a double LL so i will have node.prev and node.next , u can direclty remove in O(1)
   - So you have to do removeLast( ) and addFront( )
   - LinkedHashMap with ordered = true is predefined LRU from java (u dont need LL here)
 

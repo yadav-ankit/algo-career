@@ -1,0 +1,8 @@
+
+
+1. for LRU cache  = Map + Double LL
+  - we store key as index or id and value as Node
+  - Why can't i use just a LL bcz i want get in O(1) 
+  - Why can't i use just a Map bcz i want to maintain order of elements(Node)
+  - So you have to do removeLast( ) and addFront( )
+  - LinkedHashMap with ordered = true is predefined LRU from java (u dont need LL here)

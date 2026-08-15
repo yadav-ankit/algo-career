@@ -4,6 +4,14 @@ Next greater element --> start from last index and keep checking stack ..agar mu
 Next smaller element --> start from the first index and keep checking stack ..agar mujhse bda h to ignore (pop it) otherwise stack.top is the NSE
 ------------------------------------------------------------------------------------------------------------------
 
+For sliding window
+window length = r - l + 1; ( +1 bcz its 0 based indexing)
+
+if u want to reach the first element of the window use (r-l) only.
+
+------------------------------------------------------------------------------------------------------------------
+
+
 For Print all paths use Strings not List bcz strings are immutable
 every += creates a brand new String, it never modifies the original.
 

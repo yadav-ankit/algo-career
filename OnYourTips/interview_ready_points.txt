@@ -9,6 +9,30 @@ for Diameter of tree use the hegith method only ..just keeps a global max variab
 
 dia = max(dia , left + right);
 
+------------------------------------------------------------------------------------------------------------------
+
+DP
+SubsetSum to rat lo ...
+use reverse iteration here
+
+boolean subsetSumToTarget(int[] nums, int target) {
+  boolean[] dp = new boolean[target + 1];
+  dp[0] = true; // empty subset
+
+  for (int num : nums)
+    for (int j = target; j >= num; j--) // reverse = 0/1 (use each item once)
+      dp[j] |= dp[j - num];
+
+  return dp[target];
+}
+
+Coin change (1 , 2) and Knapsack
+
+for (main array){
+  for( dp array) {
+  
+  }
+}
 
 ------------------------------------------------------------------------------------------------------------------
 

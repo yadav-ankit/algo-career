@@ -2,8 +2,15 @@ Algo tips
 
 Next greater element --> start from last index and keep checking stack ..agar mujhse chota h to ignore (pop it) otherwise stack.top is the NGE.
 Next smaller element --> start from the first index and keep checking stack ..agar mujhse bda h to ignore (pop it) otherwise stack.top is the NSE
+------------------------------------------------------------------------------------------------------------------
 
+For Print all paths use Strings not List bcz strings are immutable
+every += creates a brand new String, it never modifies the original.
 
+if u use List then u have to use ans.add(new ArrayList(path));
+and then backtrack in the end like path.remove(path.size() -1);
+
+------------------------------------------------------------------------------------------------------------------
 
 Edit distance vs LCSubsequence vs LCs(Substring)
 
@@ -29,7 +36,7 @@ if (s1.charAt(i-1) == s2.charAt(j-1)) {
   dp[i][j] = 0; 
 }
 
-
+------------------------------------------------------------------------------------------------------------------
 
 
 1. for LRU cache  = Map + Double LL
@@ -40,7 +47,7 @@ if (s1.charAt(i-1) == s2.charAt(j-1)) {
   - So you have to do removeLast( ) and addFront( )
   - LinkedHashMap with ordered = true is predefined LRU from java (u dont need LL here)
 
-
+------------------------------------------------------------------------------------------------------------------
 
 2. Kakfa Exactly once
 

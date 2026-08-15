@@ -1,3 +1,10 @@
+Algo tips
+
+Next greater element --> start from last index and keep checking stack ..agar mujhse chota h to ignore (pop it) otherwise stack.top is the NGE.
+Next smaller element --> start from the first index and keep checking stack ..agar mujhse bda h to ignore (pop it) otherwise stack.top is the NSE
+
+
+
 
 
 1. for LRU cache  = Map + Double LL

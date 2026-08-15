@@ -26,7 +26,7 @@ boolean subsetSumToTarget(int[] nums, int target) {
   return dp[target];
 }
 
-Coin change (1 , 2) and Knapsack
+Coin change (1 , 2) and Knapsack with forward iteration
 
 for (main array){
   for( dp array) {

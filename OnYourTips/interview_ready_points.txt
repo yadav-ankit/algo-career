@@ -3,6 +3,14 @@ Algo tips
 Next greater element --> start from last index and keep checking stack ..agar mujhse chota h to ignore (pop it) otherwise stack.top is the NGE.
 Next smaller element --> start from the first index and keep checking stack ..agar mujhse bda h to ignore (pop it) otherwise stack.top is the NSE
 ------------------------------------------------------------------------------------------------------------------
+Tree tricks to rememeber
+
+for Diameter of tree use the hegith method only ..just keeps a global max variable dia
+
+dia = max(dia , left + right);
+
+
+------------------------------------------------------------------------------------------------------------------
 
 For sliding window
 window length = r - l + 1; ( +1 bcz its 0 based indexing)

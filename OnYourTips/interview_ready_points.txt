@@ -6,3 +6,52 @@
   - Why can't i use just a Map bcz i want to maintain order of elements(Node)
   - So you have to do removeLast( ) and addFront( )
   - LinkedHashMap with ordered = true is predefined LRU from java (u dont need LL here)
+
+
+
+2. Kakfa Exactly once
+
+At-Most-Once
+The producer sends a message and does not wait for confirmation.
+
+At-Least-Once
+The producer sends a message and waits for the broker to acknowledge it.
+
+If the acknowledgment does not arrive (network failure, broker crash, timeout), the producer retries. This guarantees the message is not lost, but the retry might create a duplicate if the original write actually succeeded and only the acknowledgment was lost.
+
+Exactly once
+ 1) Idempotent Producers enable.idempotence=true
+Every message the producer sends includes the PID and a sequence number that increments with each message, per partition.
+
+The broker tracks the last sequence number it received from each producer for each partition. When a new message arrives, the broker checks: is this sequence number exactly one more than the last one I saw?
+
+If yes, the message is new and is written.
+
+If no (because it is a retry of an already-written message), the broker acknowledges the write without actually writing a duplicate.
+
+2) Transactions
+    producer.beginTransaction();
+    
+    producer.send(new ProducerRecord<>("topic-A", "A"));
+    producer.send(new ProducerRecord<>("topic-B", "B"));
+    
+    producer.commitTransaction();
+
+
+                      Producer
+                        │
+                        │ transactional.id=P1
+                        ▼
+                Transaction Coordinator
+                     Broker 3
+                    /         \
+                   /           \
+                  ▼             ▼
+             Broker 1        Broker 7
+             Topic A         Topic B
+
+The producer calls commitTransaction() or abortTransaction().
+
+The coordinator writes a commit marker to all partitions involved in the transaction.
+
+Consumers with read_committed isolation only see messages up to the last commit marker.

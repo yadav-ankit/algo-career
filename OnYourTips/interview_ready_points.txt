@@ -34,6 +34,28 @@ for (main array){
   }
 }
 
+LIS me phle DP array then nums array ..(ulta h as compared to LCS , subset sum)
+
+
+House Robber i array, ii circle (0 to n-2) & (1 to n-1), iii Tree Post Order DFS int arr [] = {pick , notPick };
+
+rememebmer only constraint is to NOT pick consecitive elements ..( it doesn mean ki alternative lene h) 5, 1, 1, 5 --> ans = 10
+
+
+CombinationSum / Backtracking me u often see for(int i= index; i < n;i++)
+
+reason for loop is 
+
+- it auto behaves as NOT PICK since we are advancing index every time
+for pick we already use in the loop
+for(int i= index; i < n;i++){
+
+  list.add(nums[i]);
+  same_method(index + 1...)
+  list.remove(nums.size() - 1);
+
+}
+
 ------------------------------------------------------------------------------------------------------------------
 
 For sliding window

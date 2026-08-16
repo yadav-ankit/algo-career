@@ -43,35 +43,40 @@ For each middle:
 every left choice can pair with every right choice
 
 So we multiply.
+
+  
+  Reframe
+total0 = total zeros in string
+total1 = total ones in string
+
+As you walk index i:
+
+right0 = total0 - left0 - (1 if s[i]=='0')
+right1 = total1 - left1 - (1 if s[i]=='1')
+
+So you only track left0 and left1. Right is derived.
+
+  
 class Solution {
-    public long numberOfWays(String s) {
-        int n = s.length();
-        
-        long left0 = 0, left1 = 0;
-        long right0 = 0, right1 = 0;
-        
-        // Count total right0 and right1
-        for (char c : s.toCharArray()) {
-            if (c == '0') right0++;
-            else right1++;
-        }
-        
-        long ways = 0;
-        
-        for (char c : s.toCharArray()) {
-            if (c == '0') {
-                right0--;
-                // "101"
-                ways += left1 * right1;
-                left0++;
-            } else {
-                right1--;
-                // "010"
-                ways += left0 * right0;
-                left1++;
-            }
-        }
-        
-        return ways;
+  public long numberOfWays(String s) {
+    long total0 = 0, total1 = 0;
+    for (char c : s.toCharArray()) {
+        if (c == '0') total0++; else total1++;
     }
+
+    long left0 = 0, left1 = 0, ways = 0;
+
+    for (char c : s.toCharArray()) {
+        if (c == '1') {
+            long right0 = total0 - left0;         // zeros remaining to right
+            ways += left0 * right0;               // "010"
+            left1++;
+        } else {
+            long right1 = total1 - left1;         // ones remaining to right
+            ways += left1 * right1;               // "101"
+            left0++;
+        }
+    }
+    return ways;
+}
 }
